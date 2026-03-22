@@ -147,6 +147,9 @@
                  <input type="text" id="user-input" placeholder="Prompt..."
                     class="flex-1 bg-white/5 border border-white/10 rounded-xl py-3.5 px-6 text-sm focus:outline-none focus:border-cyan-500/50"
                     onkeydown="if(event.key === 'Enter') sendMessage()">
+                    <button id="send-btn" onclick="sendMessage()"
+                    class="bg-cyan-500 text-white px-6 rounded-xl hover:scale-105 transition-all"><i
+                        data-lucide="arrow-up" class="w-5 h-5"></i></button>
     </div>
 </body>
 </html>
