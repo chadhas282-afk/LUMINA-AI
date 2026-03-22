@@ -180,6 +180,7 @@
         const renderer = new marked.Renderer();
         renderer.code = (token, lang) => {
             const raw = typeof token === 'object' ? token.text : token;
+            const safe = (raw || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
      </script>
 </body>
