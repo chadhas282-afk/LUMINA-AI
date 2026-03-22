@@ -178,6 +178,9 @@
         const scrollLock = document.getElementById('scroll-lock');
         let currentChatId = null, abortController = null;
         const renderer = new marked.Renderer();
+        renderer.code = (token, lang) => {
+            const raw = typeof token === 'object' ? token.text : token;
+        }
      </script>
 </body>
 
