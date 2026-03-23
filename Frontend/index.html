@@ -170,8 +170,8 @@
             </div>
         </footer>
     </div>
-     <script>
-         lucide.createIcons();
+    <script>
+        lucide.createIcons();
         const chatContainer = document.getElementById('chat-container');
         const userInput = document.getElementById('user-input');
         const stopBtn = document.getElementById('stop-btn');
@@ -181,8 +181,9 @@
         renderer.code = (token, lang) => {
             const raw = typeof token === 'object' ? token.text : token;
             const safe = (raw || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            const id = 'c-' + Math.random().toString(36).substr(2, 5);
         }
-     </script>
+    </script>
 </body>
 
 </html>
