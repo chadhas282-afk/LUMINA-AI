@@ -204,6 +204,7 @@
             const t = userInput.value.trim(); if (!t) return;
              if (chatContainer.querySelector('.opacity-10')) chatContainer.innerHTML = '';
              if (!currentChatId) currentChatId = Date.now().toString();
+             userInput.value = ''; appendMessage('user', t);
          }
     </script>
 </body>
