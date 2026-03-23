@@ -206,6 +206,7 @@
              if (!currentChatId) currentChatId = Date.now().toString();
              userInput.value = ''; appendMessage('user', t);
              stopBtn.classList.remove('hidden'); abortController = new AbortController();
+             const aiId = 'ai-' + Date.now(); appendMessage('ai', '...', aiId);
          }
     </script>
 </body>
