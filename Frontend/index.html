@@ -192,6 +192,7 @@
          const getHistory = () => JSON.parse(localStorage.getItem('lumina_history') || '[]');
          function renderSidebar() {
             const q = document.getElementById('search-history').value.toLowerCase();
+            const h = getHistory().filter(c => c.title.toLowerCase().includes(q));
          }
     </script>
 </body>
