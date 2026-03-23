@@ -208,7 +208,24 @@
              stopBtn.classList.remove('hidden'); abortController = new AbortController();
              const aiId = 'ai-' + Date.now(); appendMessage('ai', '...', aiId);
              const el = document.getElementById(aiId); let full = "";
-         }
+             try {
+                const res = await fetch('http://localhost:8000/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: t }), signal: abortController.signal });
+                const reader = res.body.getReader(); const dec = new TextDecoder();
+                el.innerText = "";
+                while (true) {
+                    const { value, done } = await reader.read(); if (done) break;
+                    const lines = dec.decode(value).split('\n');
+                    for (const l of lines) if (l.startsWith('data: ')) {
+                        full += JSON.parse(l.slice(6)).text;
+                        el.innerHTML = marked.parse(full);
+                        Prism.highlightAllUnder(el);
+                        if (scrollLock.checked) chatContainer.scrollTop = chatContainer.scrollHeight;
+                    }
+                }
+                saveToHistory(t, full);
+            } catch (e) { if (e.name !== 'AbortError') el.innerText = "Error: Check app.py."; }
+            finally { stopBtn.classList.add('hidden'); }
+            }
     </script>
 </body>
 
