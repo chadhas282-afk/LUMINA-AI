@@ -252,6 +252,7 @@
             }
 
             function copyC(id, b) { navigator.clipboard.writeText(document.getElementById(id).innerText).then(() => { b.innerText = "COPIED"; setTimeout(() => b.innerText = "Copy", 2000); }); }
+            function previewH(id) { const w = window.open(); w.document.write(document.getElementById(id).innerText); w.document.close(); }
     </script>
 </body>
 
