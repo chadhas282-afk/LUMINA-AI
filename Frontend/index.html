@@ -247,6 +247,7 @@
                 e.stopPropagation();
                 if (!confirm("Delete?")) return;
                 const h = getHistory().filter(x => x.id !== id);
+                localStorage.setItem('lumina_history', JSON.stringify(h));
             }
     </script>
 </body>
