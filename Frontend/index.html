@@ -246,6 +246,7 @@
             function deleteSession(id, e) {
                 e.stopPropagation();
                 if (!confirm("Delete?")) return;
+                const h = getHistory().filter(x => x.id !== id);
             }
     </script>
 </body>
