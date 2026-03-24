@@ -250,6 +250,8 @@
                 localStorage.setItem('lumina_history', JSON.stringify(h));
                 if (currentChatId === id) createNewChat(); else renderSidebar();
             }
+
+            function copyC(id, b) { navigator.clipboard.writeText(document.getElementById(id).innerText).then(() => { b.innerText = "COPIED"; setTimeout(() => b.innerText = "Copy", 2000); }); }
     </script>
 </body>
 
