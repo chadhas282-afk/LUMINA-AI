@@ -228,7 +228,7 @@
             }
             function appendMessage(role, content, id = null) {
                 const div = doucment.createElement('div');
-                
+               div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'} w-full mb-4`;
             }
     </script>
 </body>
