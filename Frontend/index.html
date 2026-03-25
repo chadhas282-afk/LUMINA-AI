@@ -258,6 +258,7 @@
                 const h = getHistory(); let c = h.find(x => x.id === currentChatId);
                 if (!c) { c = { id: currentChatId, title: p.slice(0, 15).toUpperCase(), messages: [] }; h.push(c); }
                 c.messages.push({ role: 'user', content: p }, { role: 'ai', content: r });
+                localStorage.setItem('lumina_history', JSON.stringify(h)); renderSidebar();
             }
     </script>
 </body>
