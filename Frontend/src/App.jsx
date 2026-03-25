@@ -2,5 +2,5 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Lumina = () => {
-    
+    const [messages, setMessages] = useState([{ role: 'ai', content: 'SUN AI is online. How can I assist you?' }]);
 }
