@@ -3,4 +3,5 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Lumina = () => {
     const [messages, setMessages] = useState([{ role: 'ai', content: 'SUN AI is online. How can I assist you?' }]);
+    const [input, setInput] = useState('');
 }
