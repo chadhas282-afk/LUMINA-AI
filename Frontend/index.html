@@ -260,7 +260,9 @@
                 c.messages.push({ role: 'user', content: p }, { role: 'ai', content: r });
                 localStorage.setItem('lumina_history', JSON.stringify(h)); renderSidebar();
             }
-            function loadChat(id) { const c = getHistory().find(x => x.id === id); if (!c) return;  }
+            function loadChat(id) { const c = getHistory().find(x => x.id === id); if (!c) return;  
+                currentChatId = id; chatContainer.innerHTML = ''; c.messages.forEach(m => appendMessage(m.role, m.content, false)); renderSidebar(); 
+            }
     </script>
 </body>
 
