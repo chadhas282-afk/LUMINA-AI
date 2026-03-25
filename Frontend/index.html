@@ -260,6 +260,7 @@
                 c.messages.push({ role: 'user', content: p }, { role: 'ai', content: r });
                 localStorage.setItem('lumina_history', JSON.stringify(h)); renderSidebar();
             }
+            function loadChat(id) { const c = getHistory().find(x => x.id === id); if (!c) return;  }
     </script>
 </body>
 
