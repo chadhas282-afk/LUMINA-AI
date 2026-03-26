@@ -19,4 +19,9 @@ const handleSend = async () => {
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setIsTyping(true);
+
+    try {
+         const response = await fetch('http://localhost:8000/chat', {
+            
+         }
 }
