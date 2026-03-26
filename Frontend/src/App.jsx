@@ -8,3 +8,6 @@ const Lumina = () => {
     const scrollRef = useRef(null);
 }
 
+useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
