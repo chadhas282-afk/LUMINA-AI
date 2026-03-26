@@ -7,3 +7,4 @@ const Lumina = () => {
     const [isTyping, setIsTyping] = useState(false);
     const scrollRef = useRef(null);
 }
+
