@@ -14,4 +14,6 @@ useEffect(() => {
 
 const handleSend = async () => {
     if (!input.trim()) return;
+
+    const userMsg = { role: 'user', content: input };
 }
