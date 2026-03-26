@@ -26,4 +26,5 @@ const handleSend = async () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: input })
          };
+        const data = await response.json();
 }
