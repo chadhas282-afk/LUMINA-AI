@@ -13,5 +13,5 @@ useEffect(() => {
   }, [messages]);
 
 const handleSend = async () => {
-    
+    if (!input.trim()) return;
 }
