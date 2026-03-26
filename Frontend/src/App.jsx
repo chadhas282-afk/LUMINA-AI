@@ -25,7 +25,7 @@ const handleSend = async () => {
             method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: input })
-         };
+          });
         const data = await response.json();
         setMessages(prev => [...prev, { role: 'ai', content: data.response }]);
          } catch (err) {
