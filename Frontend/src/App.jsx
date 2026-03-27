@@ -48,5 +48,8 @@ return (
           </h1>
             </div>
         </header>
+        <main className="w-full max-w-3xl flex-1 flex flex-col gap-4 overflow-y-auto custom-scrollbar pb-24">
+            
+        </main>
     </div>
 )
