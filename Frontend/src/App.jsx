@@ -57,12 +57,13 @@ return (
                     key={i}
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
-                        <div className={`max-w-[80%] px-5 py-3 rounded-2xl border${
+                      <div className={`max-w-[80%] px-5 py-3 rounded-2xl border ${
                 msg.role === 'user' 
-                ? 'bg-white/5 border-white/10 text-white' 
-                 : 'bg-cyan-500/5 border-cyan-500/20 text-slate-300'
-            }
-
+                  ? 'bg-white/5 border-white/10 text-white' 
+                  : 'bg-cyan-500/5 border-cyan-500/20 text-slate-300'
+              }`}>
+                {msg.content}
+              </div>
                     </motion.div>
                 ))}
             </AnimatePresence>
