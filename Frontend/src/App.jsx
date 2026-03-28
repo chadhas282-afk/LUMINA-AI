@@ -57,7 +57,9 @@ return (
                     key={i}
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
-                        <div className={`max-w-[80%] px-5 py-3 rounded-2xl border
+                        <div className={`max-w-[80%] px-5 py-3 rounded-2xl border${
+                msg.role === 'user' 
+            }
 
                     </motion.div>
                 ))}
