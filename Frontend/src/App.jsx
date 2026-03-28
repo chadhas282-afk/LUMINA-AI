@@ -67,6 +67,9 @@ return (
                     </motion.div>
                 ))}
             </AnimatePresence>
+            {isTyping && (
+                
+            )}
         </main>
     </div>
 )
