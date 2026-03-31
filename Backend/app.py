@@ -27,5 +27,9 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 async def generate_tokens(prompt: str, request: Request):
     messages = [
-        
+        {
+            "role": "system", 
+            "content": "You are Lumina, an expert developer. Always provide code snippets inside Markdown triple backticks."
+        },
+        {"role": "user", "content": prompt},
     ]
