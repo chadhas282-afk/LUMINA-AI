@@ -35,5 +35,6 @@ async def generate_tokens(prompt: str, request: Request):
     ]
     inputs = tokenizer.apply_chat_template(
         messages, 
+        add_generation_prompt=True,
         
     )
