@@ -25,3 +25,4 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.float16, 
     device_map="auto"
 )
+async def generate_tokens(prompt: str, request: Request):
