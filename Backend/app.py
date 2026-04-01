@@ -46,5 +46,5 @@ else:
 
 streamer = TextIteratorStreamer(
     tokenizer,
-    
+    timeout=20.0,
 )
