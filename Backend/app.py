@@ -48,4 +48,5 @@ streamer = TextIteratorStreamer(
     tokenizer,
     timeout=20.0,
      skip_prompt=True,
+     skip_special_tokens=True
 )
