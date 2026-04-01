@@ -50,3 +50,7 @@ streamer = TextIteratorStreamer(
      skip_prompt=True,
      skip_special_tokens=True
 )
+
+gen_kwargs = dict(
+    
+)
