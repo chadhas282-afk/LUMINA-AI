@@ -53,4 +53,5 @@ streamer = TextIteratorStreamer(
 
 gen_kwargs = dict(
     input_ids=input_ids, 
+    streamer=streamer,
 )
