@@ -54,4 +54,5 @@ streamer = TextIteratorStreamer(
 gen_kwargs = dict(
     input_ids=input_ids, 
     streamer=streamer,
+    max_new_tokens=1024,
 )
