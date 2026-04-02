@@ -58,4 +58,7 @@ gen_kwargs = dict(
     do_sample=True,
     temperature=0.4,
     top_p=0.9,
+    pad_token_id=tokenizer.eos_token_id
 )
+
+thread = Thread(target=model.generate, kwargs=gen_kwargs)
