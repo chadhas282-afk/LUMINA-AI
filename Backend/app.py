@@ -56,4 +56,5 @@ gen_kwargs = dict(
     streamer=streamer,
     max_new_tokens=1024,
     do_sample=True,
+    temperature=0.4,
 )
