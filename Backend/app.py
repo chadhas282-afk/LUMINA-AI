@@ -63,3 +63,6 @@ gen_kwargs = dict(
 
 thread = Thread(target=model.generate, kwargs=gen_kwargs)
 thread.start()
+
+try:
+    
