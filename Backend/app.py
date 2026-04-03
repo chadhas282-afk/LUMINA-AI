@@ -7,6 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStream
 from fastapi.middleware.cors import CORSMiddleware
 from threading import Thread
 from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
 app.add_middleware(
@@ -24,6 +25,7 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.float16, 
     device_map="auto"
 )
+
 async def generate_tokens(prompt: str, request: Request):
     messages = [
         {
@@ -32,50 +34,51 @@ async def generate_tokens(prompt: str, request: Request):
         },
         {"role": "user", "content": prompt},
     ]
+    
     inputs = tokenizer.apply_chat_template(
         messages, 
-        add_generation_prompt=True,
+        add_generation_prompt=True, 
         return_tensors="pt"
     ).to(model.device)
+    
+    if isinstance(inputs, torch.Tensor):
+        input_ids = inputs
+    else:
+        input_ids = inputs["input_ids"]
 
-if isinstance(inputs, torch.Tensor):
-    input_ids = inputs
-else:
-    input_ids = inputs["input_ids"]
+    streamer = TextIteratorStreamer(
+        tokenizer, 
+        timeout=20.0, 
+        skip_prompt=True, 
+        skip_special_tokens=True
+    )
+    
+    gen_kwargs = dict(
+        input_ids=input_ids, 
+        streamer=streamer,
+        max_new_tokens=1024,
+        do_sample=True,
+        temperature=0.4,
+        top_p=0.9,
+        pad_token_id=tokenizer.eos_token_id
+    )
 
-streamer = TextIteratorStreamer(
-    tokenizer,
-    timeout=20.0,
-     skip_prompt=True,
-     skip_special_tokens=True
-)
+    thread = Thread(target=model.generate, kwargs=gen_kwargs)
+    thread.start()
 
-gen_kwargs = dict(
-    input_ids=input_ids, 
-    streamer=streamer,
-    max_new_tokens=1024,
-    do_sample=True,
-    temperature=0.4,
-    top_p=0.9,
-    pad_token_id=tokenizer.eos_token_id
-)
-
-thread = Thread(target=model.generate, kwargs=gen_kwargs)
-thread.start()
-
- try:
-    for new_text in streamer:
-        if await request.is_disconnected():
-            break 
-        
-         if new_text:
+    try:
+        for new_text in streamer:
+            if await request.is_disconnected():
+                break 
+            
+            if new_text:
                 print(new_text, end="", flush=True)
                 yield f"data: {json.dumps({'text': new_text})}\n\n"
             
             await asyncio.sleep(0.01)
-    
- except Exception as e:
+            
+    except Exception as e:
         print(f"\nStreaming Error: {e}")
         yield f"data: {json.dumps({'text': ' [Stream Error]'})}\n\n"
-finally:
-    thread.join(timeout=1.0)
+    finally:
+        thread.join(timeout=1.0)
