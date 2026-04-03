@@ -76,4 +76,4 @@ thread.start()
     
  except Exception as e:
         print(f"\nStreaming Error: {e}")
-        
+        yield f"data: {json.dumps({'text': ' [Stream Error]'})}\n\n"
