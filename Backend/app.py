@@ -91,4 +91,4 @@ async def chat(request: Request):
         media_type="text/event-stream"
     )
 if __name__ == "__main__":
-    
+    import uvicorn
