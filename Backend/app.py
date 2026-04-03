@@ -74,4 +74,6 @@ thread.start()
             
             await asyncio.sleep(0.01)
     
-     except Exception as e:
+ except Exception as e:
+        print(f"\nStreaming Error: {e}")
+        
