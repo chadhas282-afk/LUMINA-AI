@@ -13,7 +13,7 @@ const Lumina = () => {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-    
+
     const userMsg = { role: 'user', content: input };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
@@ -59,17 +59,16 @@ const Lumina = () => {
               key={i}
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              <div className={`max-w-[80%] px-5 py-3 rounded-2xl border ${
-                msg.role === 'user' 
-                  ? 'bg-white/5 border-white/10 text-white' 
+              <div className={`max-w-[80%] px-5 py-3 rounded-2xl border ${msg.role === 'user'
+                  ? 'bg-white/5 border-white/10 text-white'
                   : 'bg-cyan-500/5 border-cyan-500/20 text-slate-300'
-              }`}>
+                }`}>
                 {msg.content}
               </div>
             </motion.div>
           ))}
         </AnimatePresence>
-        
+
         {isTyping && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-1 p-2">
             <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce" />
@@ -82,15 +81,15 @@ const Lumina = () => {
 
       <div className="fixed bottom-8 w-full max-w-3xl px-4">
         <div className="relative flex items-center bg-white/5 backdrop-blur-xl border border-white/10 p-2 rounded-2xl shadow-2xl">
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Type a message..."
             className="flex-1 bg-transparent px-4 py-3 outline-none placeholder:text-slate-500"
           />
-          <button 
+          <button
             onClick={handleSend}
             className="bg-white text-black font-bold px-6 py-3 rounded-xl hover:bg-cyan-400 transition-colors active:scale-95"
           >
