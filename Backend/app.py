@@ -87,9 +87,10 @@ async def generate_tokens(prompt: str, request: Request):
 async def chat(request: Request):
     data = await request.json()
     return StreamingResponse(
-        generate_tokens(data['prompt'], request),
+        generate_tokens(data['prompt'], request), 
         media_type="text/event-stream"
     )
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
