@@ -90,3 +90,5 @@ async def chat(request: Request):
         generate_tokens(data['prompt'], request),
         media_type="text/event-stream"
     )
+if __name__ == "__main__":
+    
