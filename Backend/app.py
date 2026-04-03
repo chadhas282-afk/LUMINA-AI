@@ -84,3 +84,5 @@ async def generate_tokens(prompt: str, request: Request):
         thread.join(timeout=1.0)
 
 @app.post("/chat")
+async def chat(request: Request):
+    
