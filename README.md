@@ -25,7 +25,7 @@
 
 | Component | Technology |
 | :--- | :--- |
-| **Language** | Python 3.10+ |
+| **Language** | Python |
 | **LLM Orchestration** | LangChain / LlamaIndex |
 | **Frontend** | React + Tailwind CSS |
 | **Database** | PostgreSQL (with pgvector for embeddings) |
